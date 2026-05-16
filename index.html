@@ -403,19 +403,41 @@
   <nav class="fixed top-0 left-0 right-0 z-40 px-4 md:px-8 py-4"
        style="background: rgba(253,244,250,.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(236,212,232,.6);">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
-      <a href="#" class="font-display font-extrabold text-lg tracking-wider transition-colors"
+      <a href="#hero" class="font-display font-extrabold text-lg tracking-wider transition-colors"
          style="color: var(--plum);">
         CRAZY<span class="text-neon">CLAWS</span>
       </a>
-      <div class="hidden sm:flex items-center gap-6 text-sm font-medium"
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-6 text-sm font-medium"
            style="color: var(--midplum);">
         <a href="#about"    class="hover:text-neon transition-colors">Über Susi</a>
         <a href="#preise"   class="hover:text-neon transition-colors">Preise</a>
         <a href="#showcase" class="hover:text-neon transition-colors">Showcase</a>
         <a href="#kontakt"  class="hover:text-neon transition-colors">Kontakt</a>
       </div>
+      <!-- Burger button (mobile/tablet only) -->
+      <button id="burger-btn"
+        class="flex md:hidden flex-col justify-center items-center w-10 h-10 rounded-xl focus:outline-none focus:ring-2 focus:ring-neon transition-colors"
+        style="background: rgba(255,82,175,.10); border: 1px solid rgba(255,82,175,.25);"
+        aria-label="Menü öffnen">
+        <span class="w-5 h-0.5 mb-1 transition-all duration-300 line1" style="background: var(--plum); display:block;"></span>
+        <span class="w-5 h-0.5 mb-1 transition-all duration-300 line2" style="background: var(--plum); display:block;"></span>
+        <span class="w-5 h-0.5 transition-all duration-300 line3"      style="background: var(--plum); display:block;"></span>
+      </button>
     </div>
   </nav>
+
+  <!-- Mobile menu overlay -->
+  <div id="mobile-menu"
+       class="fixed inset-0 z-40 flex flex-col justify-center items-center gap-8 md:hidden transform translate-x-full transition-transform duration-300"
+       style="background: rgba(253,244,250,.97); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);">
+    <a href="#hero"     class="mobile-link font-display font-black text-3xl hover:text-neon transition-colors" style="color: var(--plum);">Home</a>
+    <a href="#preise"   class="mobile-link font-display font-black text-3xl hover:text-neon transition-colors" style="color: var(--plum);">Leistungen &amp; Preise</a>
+    <a href="#showcase" class="mobile-link font-display font-black text-3xl hover:text-neon transition-colors" style="color: var(--plum);">The Showcase</a>
+    <a href="#about"    class="mobile-link font-display font-black text-3xl hover:text-neon transition-colors" style="color: var(--plum);">Über Susi</a>
+    <a href="#kontakt"  class="mobile-link font-display font-black text-3xl hover:text-neon transition-colors" style="color: var(--plum);">Kontakt</a>
+    <span class="text-neon text-sm font-semibold tracking-widest mt-4 opacity-60">@susi_nails_it</span>
+  </div>
 
   <!-- ================================================================== -->
   <!-- 1. HERO SECTION                                                      -->
@@ -965,6 +987,38 @@
     });
 
     checkCookieBanner();
+
+    /* ── Burger menu ── */
+    var burgerBtn   = document.getElementById('burger-btn');
+    var mobileMenu  = document.getElementById('mobile-menu');
+    var mobileLinks = document.querySelectorAll('.mobile-link');
+
+    function closeMobileMenu() {
+      mobileMenu.classList.add('translate-x-full');
+      mobileMenu.classList.remove('translate-x-0');
+      document.body.classList.remove('overflow-hidden');
+      document.querySelector('.line1').classList.remove('rotate-45', 'translate-y-2');
+      document.querySelector('.line2').classList.remove('opacity-0');
+      document.querySelector('.line3').classList.remove('-rotate-45', '-translate-y-2');
+    }
+
+    burgerBtn.addEventListener('click', function() {
+      var isOpen = mobileMenu.classList.contains('translate-x-0');
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        mobileMenu.classList.remove('translate-x-full');
+        mobileMenu.classList.add('translate-x-0');
+        document.body.classList.add('overflow-hidden');
+        document.querySelector('.line1').classList.add('rotate-45', 'translate-y-2');
+        document.querySelector('.line2').classList.add('opacity-0');
+        document.querySelector('.line3').classList.add('-rotate-45', '-translate-y-2');
+      }
+    });
+
+    mobileLinks.forEach(function(link) {
+      link.addEventListener('click', closeMobileMenu);
+    });
   </script>
 
 </body>
