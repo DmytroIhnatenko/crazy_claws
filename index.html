@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRAZY CLAWS by Susi — Premium Nail Art Düsseldorf</title>
+  <meta name="description" content="Premium Nail Art Studio in Düsseldorf. Einzigartige Gel-Verlängerungen, 3D-Art & Crazy Claws Designs. Jetzt in die VIP-Warteliste eintragen." />
+  <meta property="og:title" content="CRAZY CLAWS by Susi — Premium Nail Art Düsseldorf" />
+  <meta property="og:description" content="Deine Nägel. Deine Regeln. Premium Nail Art Studio in Düsseldorf." />
+  <meta property="og:type" content="website" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            neon:    '#ff52af',
+            plum:    '#2c1244',
+            midplum: '#7a4d8a',
+            card:    '#ffffff',
+            surface: '#fdf4fa',
+            border:  '#ecd4e8',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /*
+     * FONTS — DSGVO COMPLIANCE NOTE
+     * For production: download Syne + Inter from fonts.google.com,
+     * serve from /fonts/ directory, use @font-face — never load from
+     * fonts.googleapis.com on German-hosted sites (DSGVO violation).
+     */
+    :root {
+      --font-display : 'Syne', 'Outfit', 'Urbanist', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --font-body    : 'Inter', ui-sans-serif, system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      --neon         : #ff52af;
+      --plum         : #2c1244;
+      --midplum      : #7a4d8a;
+      --surface      : #fdf4fa;
+      --card         : #ffffff;
+      --border       : #ecd4e8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background-color: var(--surface);
+      color: var(--plum);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Subtle studio-texture overlay (simulates soft fabric/plaster) ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .032;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    .font-display { font-family: var(--font-display); }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f5e8f2; }
+    ::-webkit-scrollbar-thumb { background: var(--neon); border-radius: 4px; }
+
+    /* ── Neon glow helpers (retained, slightly tuned for light bg) ── */
+    .neon-glow   { box-shadow: 0 0 20px rgba(255,82,175,.55), 0 0 50px rgba(255,82,175,.25); }
+    .neon-text   { text-shadow: 0 0 18px rgba(255,82,175,.9), 0 0 40px rgba(255,82,175,.5), 0 0 2px rgba(255,255,255,.3); }
+    .neon-border { box-shadow: 0 0 0 1px rgba(255,82,175,.45), 0 0 22px rgba(255,82,175,.18); }
+
+    /* ── Hero gradient — bright, dreamy studio light ── */
+    .hero-gradient {
+      background:
+        radial-gradient(ellipse at 22% 18%, rgba(255,82,175,.30) 0%, transparent 50%),
+        radial-gradient(ellipse at 78% 75%, rgba(210,110,240,.20) 0%, transparent 48%),
+        radial-gradient(ellipse at 50% 50%, rgba(255,82,175,.12) 0%, transparent 65%),
+        radial-gradient(ellipse at 50% -5%, rgba(255,255,255,.95) 0%, transparent 55%),
+        linear-gradient(175deg, #fce8f4 0%, #f5dff5 45%, #eedcf5 100%);
+    }
+
+    /* ── Avatar ring — bright neon pink, remains vivid ── */
+    .avatar-ring {
+      box-shadow:
+        0 0 0 3px var(--neon),
+        0 0 28px rgba(255,82,175,.60),
+        0 0 65px rgba(255,82,175,.25);
+    }
+
+    /* ── Pulsing red dot ── */
+    @keyframes pulse-red {
+      0%,100% { box-shadow: 0 0 0 0 rgba(239,68,68,.75); }
+      60%      { box-shadow: 0 0 0 8px rgba(239,68,68,0); }
+    }
+    .pulse-red {
+      display: inline-block;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #ef4444;
+      animation: pulse-red 1.8s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    /* ── CTA Buttons ── */
+    @keyframes btn-glow {
+      0%,100% { box-shadow: 0 0 12px rgba(255,82,175,.55); }
+      50%      { box-shadow: 0 0 26px rgba(255,82,175,.85), 0 0 50px rgba(255,82,175,.3); }
+    }
+    .btn-primary {
+      background: var(--neon);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: .03em;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover {
+      background: #ff3da3;
+      transform: translateY(-2px);
+      animation: btn-glow 1.4s ease-in-out infinite;
+    }
+
+    /* Ghost button on hero (white text on pink gradient) */
+    .btn-ghost-hero {
+      border: 1.5px solid rgba(255,255,255,.75);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 600;
+      letter-spacing: .03em;
+      transition: border-color .2s, background .2s, transform .15s;
+      backdrop-filter: blur(4px);
+    }
+    .btn-ghost-hero:hover {
+      border-color: #fff;
+      background: rgba(255,255,255,.18);
+      transform: translateY(-2px);
+    }
+
+    /* Ghost button on light sections */
+    .btn-ghost-light {
+      border: 1.5px solid rgba(255,82,175,.55);
+      color: var(--plum);
+      font-family: var(--font-display);
+      font-weight: 600;
+      letter-spacing: .03em;
+      transition: border-color .2s, background .2s, color .2s, transform .15s;
+    }
+    .btn-ghost-light:hover {
+      border-color: var(--neon);
+      background: rgba(255,82,175,.06);
+      color: var(--neon);
+      transform: translateY(-2px);
+    }
+
+    /* ── Price row hover ── */
+    .price-row { transition: background .15s; border-radius: 6px; }
+    .price-row:hover { background: rgba(255,82,175,.05); }
+
+    /* ── Dot leader ── */
+    .dot-leader { display: flex; align-items: baseline; gap: 6px; }
+    .dot-fill {
+      flex: 1;
+      border-bottom: 1px dotted rgba(255,82,175,.35);
+      margin-bottom: 3px;
+    }
+
+    /* ── Gallery card zoom ── */
+    .gallery-card { overflow: hidden; }
+    .gallery-card:hover .gallery-img { transform: scale(1.06); }
+    .gallery-img { transition: transform .5s cubic-bezier(.25,.46,.45,.94); width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── Quote card tilt ── */
+    .quote-card { transform: rotate(-2deg); transition: transform .3s ease; }
+    .quote-card:hover { transform: rotate(0deg) scale(1.02); }
+
+    /* ── Modal overlay ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(44,18,68,.55);
+      z-index: 9999;
+      overflow-y: auto;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .modal-overlay.active { display: flex; }
+
+    /* ── Cookie banner ── */
+    #cookie-banner { display: none; }
+    #cookie-banner.show { display: block; }
+
+    /* ── Section divider ── */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,82,175,.25), transparent);
+    }
+
+    /* ── Shimmer for affiliate card ── */
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* ── Skill tags light style ── */
+    .skill-tag {
+      border: 1.5px solid rgba(255,82,175,.4);
+      color: var(--neon);
+      background: rgba(255,82,175,.06);
+      border-radius: 9999px;
+      padding: 4px 14px;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+
+    /* ── Card shadow (light, feminine) ── */
+    .card-shadow {
+      box-shadow: 0 4px 24px rgba(180,80,200,.10), 0 1px 4px rgba(180,80,200,.06);
+    }
+    .card-shadow-lg {
+      box-shadow: 0 8px 40px rgba(180,80,200,.12), 0 2px 8px rgba(180,80,200,.07);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================================== -->
+  <!-- COOKIE CONSENT BANNER                                               -->
+  <!-- ================================================================== -->
+  <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-50 border-t border-border">
+    <div style="background: rgba(253,244,250,.97); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);">
+      <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <p class="flex-1 text-sm leading-relaxed" style="color: var(--midplum);">
+          <span class="mr-1">🍪</span>
+          <strong style="color: var(--plum);">Cookies &amp; Datenschutz</strong> — Wir verwenden ausschließlich technisch notwendige Cookies. Keine Tracking-Cookies. Mehr Infos in unserer
+          <button onclick="openModal('datenschutz')" class="text-neon underline hover:no-underline focus:outline-none">Datenschutzerklärung</button>.
+        </p>
+        <div class="flex gap-3 flex-shrink-0">
+          <button onclick="acceptCookies()"
+            class="px-5 py-2.5 bg-neon text-white text-sm font-semibold rounded-xl hover:bg-[#ff3da3] transition-colors focus:outline-none focus:ring-2 focus:ring-neon focus:ring-offset-2">
+            Akzeptieren
+          </button>
+          <button onclick="rejectCookies()"
+            class="px-5 py-2.5 border text-sm font-semibold rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-neon focus:ring-offset-2"
+            style="border-color: var(--border); color: var(--midplum);">
+            Ablehnen
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================== -->
+  <!-- MODAL — IMPRESSUM                                                   -->
+  <!-- ================================================================== -->
+  <div id="modal-impressum" class="modal-overlay items-start justify-center py-10 px-4" role="dialog" aria-modal="true" aria-labelledby="impressum-title">
+    <div class="rounded-2xl max-w-2xl w-full p-6 md:p-10 relative my-auto card-shadow-lg"
+         style="background: #fff; border: 1px solid var(--border);">
+      <button onclick="closeModal('impressum')" aria-label="Schließen"
+        class="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full text-xl leading-none transition-colors focus:outline-none focus:ring-2 focus:ring-neon"
+        style="border: 1px solid var(--border); color: var(--midplum);">
+        &times;
+      </button>
+      <h2 id="impressum-title" class="font-display text-2xl md:text-3xl font-bold text-neon mb-6">Impressum</h2>
+      <div class="text-sm leading-relaxed space-y-5" style="color: var(--midplum);">
+
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">Angaben gemäß § 5 TMG</h3>
+          <p>Susanne [Nachname]<br>CRAZY CLAWS by Susi<br>[Straße und Hausnummer]<br>40[XXX] Düsseldorf<br>Deutschland</p>
+        </section>
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">Kontakt</h3>
+          <p>Telefon: +49 (0) [Ihre Telefonnummer]<br>
+          E-Mail: <a href="mailto:info@crazyclaws-susi.de" class="text-neon hover:underline">info@crazyclaws-susi.de</a><br>
+          Instagram: <a href="https://instagram.com/susi_nails_it" target="_blank" rel="noopener noreferrer" class="text-neon hover:underline">@susi_nails_it</a></p>
+        </section>
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">Umsatzsteuer</h3>
+          <p>Gemäß § 19 UStG wird keine Umsatzsteuer berechnet (Kleinunternehmerregelung). <em>Alternativ:</em> USt-IdNr. gemäß § 27a UStG: DE [Ihre USt-IdNr.]</p>
+        </section>
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
+          <p>Susanne [Nachname]<br>[Straße und Hausnummer]<br>40[XXX] Düsseldorf</p>
+        </section>
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">Haftung für Inhalte</h3>
+          <p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung bleiben hiervon unberührt. Eine diesbezügliche Haftung ist erst ab Kenntnis einer konkreten Rechtsverletzung möglich.</p>
+        </section>
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">Haftung für Links</h3>
+          <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Betreiber verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft — rechtswidrige Inhalte waren nicht erkennbar.</p>
+        </section>
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">Urheberrecht</h3>
+          <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Downloads und Kopien sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit Inhalte nicht vom Betreiber erstellt wurden, werden Urheberrechte Dritter beachtet.</p>
+        </section>
+        <p class="text-xs pt-4" style="border-top: 1px solid var(--border); color: #b899c4;">
+          ⚠️ Bitte ersetzen Sie alle <code style="background:#f5eef8; padding: 1px 5px; border-radius:3px;">[Platzhalter]</code> mit Ihren realen Angaben vor der Veröffentlichung.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================== -->
+  <!-- MODAL — DATENSCHUTZERKLÄRUNG (DSGVO)                               -->
+  <!-- ================================================================== -->
+  <div id="modal-datenschutz" class="modal-overlay items-start justify-center py-10 px-4" role="dialog" aria-modal="true" aria-labelledby="datenschutz-title">
+    <div class="rounded-2xl max-w-2xl w-full p-6 md:p-10 relative my-auto card-shadow-lg"
+         style="background: #fff; border: 1px solid var(--border);">
+      <button onclick="closeModal('datenschutz')" aria-label="Schließen"
+        class="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full text-xl leading-none transition-colors focus:outline-none focus:ring-2 focus:ring-neon"
+        style="border: 1px solid var(--border); color: var(--midplum);">
+        &times;
+      </button>
+      <h2 id="datenschutz-title" class="font-display text-2xl md:text-3xl font-bold text-neon mb-6">Datenschutzerklärung</h2>
+      <div class="text-sm leading-relaxed space-y-5" style="color: var(--midplum);">
+
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">1. Verantwortliche Stelle</h3>
+          <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
+          <p class="mt-2">Susanne [Nachname]<br>CRAZY CLAWS by Susi<br>[Straße und Hausnummer], 40[XXX] Düsseldorf<br>
+          E-Mail: <a href="mailto:info@crazyclaws-susi.de" class="text-neon hover:underline">info@crazyclaws-susi.de</a><br>
+          Telefon: +49 (0) [Ihre Telefonnummer]</p>
+        </section>
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">2. Allgemeines zur Datenverarbeitung</h3>
+          <p>Diese Website erhebt und verarbeitet personenbezogene Daten nur im technisch unbedingt notwendigen Umfang. Eine Weitergabe an Dritte findet ohne Ihre ausdrückliche Einwilligung nicht statt.</p>
+          <p class="mt-2">Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung), lit. c (rechtliche Verpflichtung) oder lit. f DSGVO (berechtigte Interessen).</p>
+        </section>
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">3. Hosting &amp; Server-Log-Dateien</h3>
+          <p>Beim Aufruf werden durch den Hosting-Anbieter automatisch Server-Log-Dateien erhoben (anonymisierte IP, Datum/Uhrzeit, Dateiname, Browser, OS, Datenmenge, HTTP-Status). Löschung nach max. 7 Tagen. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.</p>
+        </section>
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">4. Cookies</h3>
+          <p>Diese Website verwendet ausschließlich <strong style="color: var(--plum);">technisch notwendige Cookies</strong>. Wir setzen einen Eintrag (<code style="background:#f5eef8; padding: 1px 5px; border-radius:3px;">cookie-consent</code>) im localStorage, um Ihre Präferenzwahl zu speichern. Keine Tracking- oder Analyse-Cookies. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.</p>
+        </section>
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">5. Kontaktaufnahme per E-Mail oder WhatsApp</h3>
+          <p>Kontaktdaten werden ausschließlich zur Bearbeitung Ihrer Anfrage gespeichert und nicht weitergegeben. Rechtsgrundlage: Art. 6 Abs. 1 lit. b / f DSGVO.</p>
+          <p class="mt-2"><strong style="color: var(--plum);">Hinweis zu WhatsApp:</strong> Die Nutzung erfolgt freiwillig. Meta Ireland hat Standardvertragsklauseln gem. Art. 46 Abs. 2 lit. c DSGVO festgelegt. Infos: <a href="https://www.whatsapp.com/legal/privacy-policy-eea" target="_blank" rel="noopener noreferrer" class="text-neon hover:underline">whatsapp.com/legal</a>.</p>
+        </section>
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">6. Instagram / Social Media</h3>
+          <p>Links zu <a href="https://instagram.com/susi_nails_it" target="_blank" rel="noopener noreferrer" class="text-neon hover:underline">@susi_nails_it</a> verlassen unsere Website. Es sind keine Instagram-Plugins integriert. Datenschutzrichtlinie: <a href="https://privacycenter.instagram.com/policy" target="_blank" rel="noopener noreferrer" class="text-neon hover:underline">Instagram Privacy Center</a>.</p>
+        </section>
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">7. Affiliate-Links (km_nails.official)</h3>
+          <p>Der Partnerlink zu <a href="https://instagram.com/km_nails.official" target="_blank" rel="noopener noreferrer" class="text-neon hover:underline">@km_nails.official</a> ist ein gekennzeichneter Werbehinweis gemäß § 5a UWG. Für dortige Datenverarbeitung sind wir nicht verantwortlich.</p>
+        </section>
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">8. Drittanbieter-Ressourcen (CDN)</h3>
+          <p>Diese Website lädt Ressourcen von <strong style="color:var(--plum);">cdn.tailwindcss.com</strong> und <strong style="color:var(--plum);">unpkg.com</strong>, was Ihre IP-Adresse überträgt. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. <strong style="color:var(--plum);">Für den Produktivbetrieb empfehlen wir das lokale Hosting aller Bibliotheken.</strong></p>
+        </section>
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">9. Ihre Rechte als betroffene Person</h3>
+          <p>Gemäß DSGVO haben Sie das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21). Kontakt: <a href="mailto:info@crazyclaws-susi.de" class="text-neon hover:underline">info@crazyclaws-susi.de</a></p>
+        </section>
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">10. Beschwerderecht bei der Aufsichtsbehörde</h3>
+          <p><strong style="color:var(--plum);">Landesbeauftragte für Datenschutz und Informationsfreiheit NRW (LfDI NRW)</strong><br>
+          Kavalleriestraße 2–4, 40213 Düsseldorf · Tel: +49 211 38424-0<br>
+          E-Mail: <a href="mailto:poststelle@ldi.nrw.de" class="text-neon hover:underline">poststelle@ldi.nrw.de</a> · 
+          <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer" class="text-neon hover:underline">www.ldi.nrw.de</a></p>
+        </section>
+        <section>
+          <h3 class="font-semibold mb-1 text-base" style="color: var(--plum);">11. Aktualität dieser Datenschutzerklärung</h3>
+          <p>Stand: Mai 2024. Änderungen sind möglich und werden auf dieser Seite veröffentlicht.</p>
+        </section>
+        <p class="text-xs pt-4" style="border-top: 1px solid var(--border); color: #b899c4;">
+          ⚠️ Bitte ersetzen Sie alle <code style="background:#f5eef8; padding: 1px 5px; border-radius:3px;">[Platzhalter]</code> mit Ihren realen Angaben und lassen Sie diese Erklärung vor Veröffentlichung rechtlich prüfen.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================== -->
+  <!-- NAVIGATION                                                           -->
+  <!-- ================================================================== -->
+  <nav class="fixed top-0 left-0 right-0 z-40 px-4 md:px-8 py-4"
+       style="background: rgba(253,244,250,.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(236,212,232,.6);">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="#" class="font-display font-extrabold text-lg tracking-wider transition-colors"
+         style="color: var(--plum);">
+        CRAZY<span class="text-neon">CLAWS</span>
+      </a>
+      <div class="hidden sm:flex items-center gap-6 text-sm font-medium"
+           style="color: var(--midplum);">
+        <a href="#about"    class="hover:text-neon transition-colors">Über Susi</a>
+        <a href="#preise"   class="hover:text-neon transition-colors">Preise</a>
+        <a href="#showcase" class="hover:text-neon transition-colors">Showcase</a>
+        <a href="#kontakt"  class="hover:text-neon transition-colors">Kontakt</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================================================================== -->
+  <!-- 1. HERO SECTION                                                      -->
+  <!-- ================================================================== -->
+  <section id="hero" class="hero-gradient min-h-screen flex items-center justify-center pt-20 pb-16 px-4 relative overflow-hidden">
+
+    <!-- Decorative soft orbs -->
+    <div class="absolute top-1/3 left-1/5 w-72 h-72 rounded-full pointer-events-none"
+         style="background: rgba(255,82,175,.12); filter: blur(60px);"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-56 h-56 rounded-full pointer-events-none"
+         style="background: rgba(200,110,240,.10); filter: blur(50px);"></div>
+
+    <div class="max-w-4xl mx-auto text-center flex flex-col items-center gap-6 md:gap-8 relative z-10">
+
+      <!-- Avatar / Logo -->
+      <div data-aos="zoom-in" data-aos-duration="800"
+           class="avatar-ring w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden flex-shrink-0 flex items-center justify-center"
+           style="background: radial-gradient(ellipse at 40% 35%, rgba(255,180,220,.55), rgba(230,190,245,.75));">
+        <div class="w-full h-full flex flex-col items-center justify-center gap-2">
+          <span class="text-4xl md:text-5xl">💅</span>
+          <span class="font-display font-black text-xs md:text-sm tracking-widest text-neon drop-shadow-sm">CRAZY CLAWS</span>
+        </div>
+      </div>
+
+      <!-- Status badge — white pill with red dot -->
+      <div data-aos="fade-down" data-aos-delay="200"
+           class="flex items-center gap-3 px-4 py-2.5 rounded-full text-xs sm:text-sm max-w-full"
+           style="background: rgba(255,255,255,.88); backdrop-filter: blur(8px); border: 1px solid rgba(255,82,175,.25); box-shadow: 0 4px 20px rgba(255,82,175,.12), 0 1px 4px rgba(0,0,0,.05);">
+        <span class="pulse-red"></span>
+        <span class="leading-snug font-medium" style="color: var(--plum);">
+          <strong>Buchungsstatus:</strong> Aktuell keine Neukunden. Trage dich unten in die VIP-Warteliste ein.
+        </span>
+      </div>
+
+      <!-- Main heading — white, crisp, neon glow -->
+      <div data-aos="fade-up" data-aos-delay="100">
+        <h1 class="font-display font-black tracking-tight leading-none neon-text text-white
+                   text-5xl sm:text-7xl md:text-8xl lg:text-9xl">
+          CRAZY CLAWS
+        </h1>
+        <p class="mt-3 text-lg sm:text-xl md:text-2xl font-light tracking-wide text-white"
+           style="text-shadow: 0 1px 8px rgba(180,80,200,.25);">
+          Deine Nägel.<span class="text-neon font-semibold"> Deine Regeln.</span>
+        </p>
+        <p class="mt-1 text-sm tracking-widest uppercase text-white opacity-70">
+          by Susi · Düsseldorf
+        </p>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div data-aos="fade-up" data-aos-delay="300"
+           class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+        <a id="warteliste" href="#kontakt"
+           class="btn-primary px-7 py-4 rounded-2xl text-base text-center">
+          [ In die Warteliste eintragen ]
+        </a>
+        <a href="#preise"
+           class="btn-ghost-hero px-7 py-4 rounded-2xl text-base text-center">
+          [ Preise entdecken ]
+        </a>
+      </div>
+
+      <!-- Scroll hint -->
+      <div data-aos="fade" data-aos-delay="600" class="mt-2 flex flex-col items-center gap-1 text-xs text-white opacity-50">
+        <span>scroll</span>
+        <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ================================================================== -->
+  <!-- 2. MEET THE ARTIST                                                   -->
+  <!-- ================================================================== -->
+  <section id="about" class="py-20 md:py-28 px-4 md:px-8" style="background: var(--surface);">
+    <div class="max-w-6xl mx-auto">
+
+      <p data-aos="fade-up" class="text-neon text-xs font-semibold tracking-widest uppercase mb-3">Meet the Artist</p>
+      <h2 data-aos="fade-up" data-aos-delay="50"
+          class="font-display font-black text-3xl sm:text-4xl md:text-5xl mb-12 md:mb-16"
+          style="color: var(--plum);">
+        Hi, ich bin <span class="text-neon">Susi</span>
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+
+        <!-- Portrait -->
+        <div data-aos="fade-right" class="relative">
+          <div class="rounded-2xl overflow-hidden aspect-square w-full max-w-sm mx-auto neon-border"
+               style="background: linear-gradient(135deg, rgba(255,180,220,.35) 0%, rgba(230,195,250,.5) 100%); border: 1.5px solid var(--border);">
+            <div class="w-full h-full flex flex-col items-center justify-center gap-4">
+              <div class="w-20 h-20 rounded-full flex items-center justify-center"
+                   style="background: rgba(255,82,175,.12); border: 1.5px solid rgba(255,82,175,.3);">
+                <span class="text-4xl">👤</span>
+              </div>
+              <span class="text-sm font-medium" style="color: var(--midplum);">Portrait Platzhalter</span>
+            </div>
+          </div>
+
+          <!-- Quote card — inline on mobile, floating on desktop -->
+          <div class="quote-card mt-4 md:mt-0 md:absolute md:-bottom-4 md:-right-6 rounded-2xl px-4 py-3 max-w-full md:max-w-[220px] card-shadow"
+               style="background: #fff; border: 1px solid var(--border);">
+            <p class="text-sm font-medium leading-snug" style="color: var(--plum);">
+              „Ja, auch Männer müssen mal zur Maniküre! 😉💅"
+            </p>
+            <span class="text-neon text-xs font-semibold mt-1 block">— Susi</span>
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div data-aos="fade-left" data-aos-delay="150" class="space-y-5 pt-6 md:pt-0">
+          <p class="text-base md:text-lg leading-relaxed" style="color: var(--midplum);">
+            Ich bin die Besitzerin des Nagelstudios <strong style="color: var(--plum);">‚CRAZY CLAWS'</strong> in Düsseldorf. Bei mir bekommst du nicht einfach nur eine Maniküre — ich kreiere einzigartige Nail Art, die deine Persönlichkeit widerspiegelt.
+          </p>
+          <p class="text-base md:text-lg leading-relaxed" style="color: var(--midplum);">
+            Für mich ist jede Kundin nach dem ersten Termin wie eine Freundin. Egal ob extreme Gel-Verlängerungen, Hardcore 3D-Art oder ein cleaner, minimalistischer Touch-up — <span style="color: var(--plum); font-weight: 600;">wir lassen deine wildesten Ideen wahr werden.</span>
+          </p>
+
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="skill-tag">Gel X</span>
+            <span class="skill-tag">Acryl</span>
+            <span class="skill-tag">3D Nail Art</span>
+            <span class="skill-tag">Charms &amp; Steinchen</span>
+            <span class="skill-tag">Maniküre</span>
+          </div>
+
+          <a href="https://instagram.com/susi_nails_it" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-sm font-medium hover:text-neon transition-colors mt-2"
+             style="color: var(--midplum);">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+            @susi_nails_it
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ================================================================== -->
+  <!-- 3. PRICE SHEET                                                       -->
+  <!-- ================================================================== -->
+  <section id="preise" class="py-20 md:py-28 px-4 md:px-8"
+           style="background: linear-gradient(180deg, #f8edf5 0%, #fdf4fa 100%);">
+    <div class="max-w-4xl mx-auto">
+
+      <p data-aos="fade-up" class="text-neon text-xs font-semibold tracking-widest uppercase mb-3">Transparent &amp; Fair</p>
+      <h2 data-aos="fade-up" data-aos-delay="50"
+          class="font-display font-black text-3xl sm:text-4xl md:text-5xl mb-10 md:mb-14"
+          style="color: var(--plum);">
+        Leistungen &amp; Preise
+      </h2>
+
+      <div data-aos="fade-up" data-aos-delay="100"
+           class="rounded-2xl overflow-hidden card-shadow-lg"
+           style="background: #fff; border: 1.5px solid var(--border);">
+
+        <!-- NEUMODELLAGEN -->
+        <div class="px-5 md:px-8 pt-8 pb-5">
+          <h3 class="font-display font-black text-neon text-sm tracking-widest uppercase mb-5">
+            Neumodellagen
+            <span class="font-normal normal-case ml-2 text-xs" style="color: #b899c4;">(Gel X / Acryl / Gel)</span>
+          </h3>
+          <div class="space-y-2">
+            <div class="price-row dot-leader px-2 py-2">
+              <span class="text-sm" style="color: var(--midplum);">Länge S</span>
+              <span class="dot-fill"></span>
+              <span class="text-neon font-bold text-sm whitespace-nowrap">55 €</span>
+            </div>
+            <div class="price-row dot-leader px-2 py-2">
+              <span class="text-sm" style="color: var(--midplum);">Länge M</span>
+              <span class="dot-fill"></span>
+              <span class="text-neon font-bold text-sm whitespace-nowrap">65 €</span>
+            </div>
+            <div class="price-row dot-leader px-2 py-2">
+              <span class="text-sm" style="color: var(--midplum);">Länge L</span>
+              <span class="dot-fill"></span>
+              <span class="text-neon font-bold text-sm whitespace-nowrap">75 €</span>
+            </div>
+            <div class="price-row dot-leader px-2 py-2">
+              <span class="text-sm" style="color: var(--midplum);">Länge XL+</span>
+              <span class="dot-fill"></span>
+              <span class="text-neon font-bold text-sm whitespace-nowrap">ab 85 €</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-divider mx-5 md:mx-8"></div>
+
+        <!-- DESIGN LEVEL -->
+        <div class="px-5 md:px-8 py-5">
+          <h3 class="font-display font-black text-neon text-sm tracking-widest uppercase mb-1">
+            Crazy Claws Design Level
+          </h3>
+          <p class="text-xs mb-5" style="color: #b899c4;">(Steinchen, Farbe, Charms inkl.)</p>
+          <div class="space-y-2">
+            <div class="price-row dot-leader px-2 py-2">
+              <span class="text-sm" style="color: var(--midplum);">Design Level 1 <span style="color:#b899c4;">(einfach)</span></span>
+              <span class="dot-fill"></span>
+              <span class="text-neon font-bold text-sm whitespace-nowrap">+20 €</span>
+            </div>
+            <div class="price-row dot-leader px-2 py-2">
+              <span class="text-sm" style="color: var(--midplum);">Design Level 2 <span style="color:#b899c4;">(medium)</span></span>
+              <span class="dot-fill"></span>
+              <span class="text-neon font-bold text-sm whitespace-nowrap">+30 €</span>
+            </div>
+            <div class="price-row dot-leader px-2 py-2">
+              <span class="text-sm" style="color: var(--midplum);">Design Level 3 <span style="color:#b899c4;">(hardcore)</span></span>
+              <span class="dot-fill"></span>
+              <span class="text-neon font-bold text-sm whitespace-nowrap">ab +40 €</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-divider mx-5 md:mx-8"></div>
+
+        <!-- CLASSY TREATMENTS -->
+        <div class="px-5 md:px-8 py-5 pb-8">
+          <h3 class="font-display font-black text-neon text-sm tracking-widest uppercase mb-5">
+            Classy Treatments
+          </h3>
+          <div class="space-y-2">
+            <div class="price-row dot-leader px-2 py-2">
+              <span class="text-sm" style="color: var(--midplum);">Naturnagelverstärkung</span>
+              <span class="dot-fill"></span>
+              <span class="text-neon font-bold text-sm whitespace-nowrap">50 €</span>
+            </div>
+            <div class="price-row dot-leader px-2 py-2">
+              <span class="text-sm" style="color: var(--midplum);">French</span>
+              <span class="dot-fill"></span>
+              <span class="text-neon font-bold text-sm whitespace-nowrap">+15 €</span>
+            </div>
+            <div class="price-row dot-leader px-2 py-2">
+              <span class="text-sm" style="color: var(--midplum);">Fullcover Farbe</span>
+              <span class="dot-fill"></span>
+              <span class="text-neon font-bold text-sm whitespace-nowrap">+15 €</span>
+            </div>
+            <div class="price-row dot-leader px-2 py-2">
+              <span class="text-sm" style="color: var(--midplum);">Trockenmaniküre <span style="color:#b899c4;">(inkl. Pflege)</span></span>
+              <span class="dot-fill"></span>
+              <span class="text-neon font-bold text-sm whitespace-nowrap">35 €</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="px-5 md:px-8 py-4" style="border-top: 1px solid var(--border); background: #fdf4fa;">
+          <p class="text-xs text-center" style="color: #b899c4;">Alle Preise inkl. Material. Endpreis hängt von Länge &amp; Design Level ab. Beratung beim Termin.</p>
+        </div>
+      </div>
+
+      <div data-aos="fade-up" data-aos-delay="200" class="text-center mt-8">
+        <a href="#kontakt" class="btn-primary inline-block px-8 py-4 rounded-2xl text-base font-semibold">
+          Jetzt in die Warteliste eintragen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ================================================================== -->
+  <!-- 4. THE SHOWCASE                                                      -->
+  <!-- ================================================================== -->
+  <section id="showcase" class="py-20 md:py-28 px-4 md:px-8" style="background: var(--surface);">
+    <div class="max-w-6xl mx-auto">
+
+      <p data-aos="fade-up" class="text-neon text-xs font-semibold tracking-widest uppercase mb-3">Portfolio</p>
+      <h2 data-aos="fade-up" data-aos-delay="50"
+          class="font-display font-black text-3xl sm:text-4xl md:text-5xl mb-10 md:mb-14"
+          style="color: var(--plum);">
+        The Showcase
+      </h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 auto-rows-[180px] md:auto-rows-[220px]">
+
+        <div data-aos="fade-up" data-aos-delay="0"
+             class="gallery-card rounded-2xl overflow-hidden row-span-2 relative card-shadow"
+             style="border: 1.5px solid var(--border);">
+          <div class="gallery-img w-full h-full flex flex-col items-center justify-center gap-3"
+               style="background: linear-gradient(135deg, rgba(255,180,220,.45) 0%, rgba(245,220,255,.6) 100%);">
+            <span class="text-5xl">💅</span>
+            <div class="absolute bottom-0 left-0 right-0 p-3"
+                 style="background: linear-gradient(to top, rgba(255,180,220,.7), transparent);">
+              <p class="text-xs font-semibold" style="color: var(--plum);">Gel-Verlängerungen</p>
+              <p class="text-[10px]" style="color: var(--midplum);">Länge XL · Design Level 3</p>
+            </div>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="80"
+             class="gallery-card rounded-2xl overflow-hidden relative card-shadow"
+             style="border: 1.5px solid var(--border);">
+          <div class="gallery-img w-full h-full flex flex-col items-center justify-center gap-2"
+               style="background: linear-gradient(135deg, rgba(210,150,240,.4) 0%, rgba(255,180,220,.35) 100%);">
+            <span class="text-4xl">✨</span>
+            <div class="absolute bottom-0 left-0 right-0 p-3"
+                 style="background: linear-gradient(to top, rgba(210,150,240,.6), transparent);">
+              <p class="text-xs font-semibold" style="color: var(--plum);">3D Nail Art</p>
+              <p class="text-[10px]" style="color: var(--midplum);">Charms &amp; Steinchen</p>
+            </div>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="160"
+             class="gallery-card rounded-2xl overflow-hidden relative card-shadow"
+             style="border: 1.5px solid var(--border);">
+          <div class="gallery-img w-full h-full flex flex-col items-center justify-center gap-2"
+               style="background: linear-gradient(135deg, rgba(255,220,200,.4) 0%, rgba(255,180,220,.4) 100%);">
+            <span class="text-4xl">🏠</span>
+            <div class="absolute bottom-0 left-0 right-0 p-3"
+                 style="background: linear-gradient(to top, rgba(255,200,180,.6), transparent);">
+              <p class="text-xs font-semibold" style="color: var(--plum);">Das Studio</p>
+              <p class="text-[10px]" style="color: var(--midplum);">Düsseldorf · Premium</p>
+            </div>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="240"
+             class="gallery-card rounded-2xl overflow-hidden col-span-2 relative card-shadow"
+             style="border: 1.5px solid var(--border);">
+          <div class="gallery-img w-full h-full flex flex-col items-center justify-center gap-2"
+               style="background: linear-gradient(135deg, rgba(180,220,255,.3) 0%, rgba(255,82,175,.2) 100%);">
+            <span class="text-4xl">🔍</span>
+            <div class="absolute bottom-0 left-0 right-0 p-3"
+                 style="background: linear-gradient(to top, rgba(180,160,240,.6), transparent);">
+              <p class="text-xs font-semibold" style="color: var(--plum);">Close-up Detail</p>
+              <p class="text-[10px]" style="color: var(--midplum);">Hardcore 3D Art · Level 3</p>
+            </div>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="320"
+             class="gallery-card rounded-2xl overflow-hidden row-span-2 relative card-shadow"
+             style="border: 1.5px solid var(--border);">
+          <div class="gallery-img w-full h-full flex flex-col items-center justify-center gap-3"
+               style="background: linear-gradient(135deg, rgba(255,200,230,.5) 0%, rgba(240,200,255,.5) 100%);">
+            <span class="text-5xl">🌸</span>
+            <div class="absolute bottom-0 left-0 right-0 p-3"
+                 style="background: linear-gradient(to top, rgba(255,180,220,.65), transparent);">
+              <p class="text-xs font-semibold" style="color: var(--plum);">French Deluxe</p>
+              <p class="text-[10px]" style="color: var(--midplum);">Classic · Level 1</p>
+            </div>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="400"
+             class="gallery-card rounded-2xl overflow-hidden col-span-2 relative card-shadow"
+             style="border: 1.5px solid var(--border);">
+          <div class="gallery-img w-full h-full flex flex-col items-center justify-center gap-2"
+               style="background: linear-gradient(135deg, rgba(255,82,175,.2) 0%, rgba(200,120,240,.3) 100%);">
+            <span class="text-4xl">🐾</span>
+            <div class="absolute bottom-0 left-0 right-0 p-3"
+                 style="background: linear-gradient(to top, rgba(200,120,240,.55), transparent);">
+              <p class="text-xs font-semibold" style="color: var(--plum);">Crazy Claws Set</p>
+              <p class="text-[10px]" style="color: var(--midplum);">Signature Style · Design Level 2</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p data-aos="fade-up" class="text-center text-xs mt-6" style="color: #b899c4;">
+        Echte Arbeit · Bilder werden nach Erstellung der Website ergänzt.
+        Mehr auf <a href="https://instagram.com/susi_nails_it" target="_blank" rel="noopener noreferrer" class="text-neon hover:underline">@susi_nails_it</a>
+      </p>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ================================================================== -->
+  <!-- 5. PARTNERSHIPS, CONTACT & FOOTER                                    -->
+  <!-- ================================================================== -->
+  <section id="kontakt" class="py-20 md:py-28 px-4 md:px-8"
+           style="background: linear-gradient(180deg, #fdf4fa 0%, #f8edf5 100%);">
+    <div class="max-w-4xl mx-auto space-y-10">
+
+      <!-- Affiliate banner -->
+      <div data-aos="fade-up">
+        <div class="relative rounded-2xl p-px"
+             style="background: linear-gradient(135deg, #ff52af, #d490f0, #ff52af); background-size: 200% auto; animation: shimmer 3s linear infinite;">
+          <div class="rounded-2xl px-6 md:px-8 py-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5"
+               style="background: #fff;">
+            <div class="flex-1">
+              <p class="text-neon text-xs font-semibold tracking-widest uppercase mb-2">⭐ Offizieller Werbepartner</p>
+              <h3 class="font-display font-bold text-lg md:text-xl mb-1" style="color: var(--plum);">@km_nails.official</h3>
+              <p class="text-sm leading-relaxed" style="color: var(--midplum);">
+                Nutze den exklusiven Code
+                <strong class="font-bold tracking-wider px-2 py-0.5 rounded mx-1"
+                        style="color: var(--plum); background: rgba(255,82,175,.1); border: 1px solid rgba(255,82,175,.2);">Susi10</strong>
+                und erhalte <strong class="text-neon">10 % Rabatt</strong> auf deine Bestellung.
+              </p>
+            </div>
+            <a href="https://instagram.com/km_nails.official" target="_blank" rel="noopener noreferrer"
+               class="flex-shrink-0 btn-ghost-light px-5 py-3 rounded-xl text-sm font-semibold whitespace-nowrap">
+              Zum Partner →
+            </a>
+          </div>
+        </div>
+        <p class="text-xs mt-2 ml-2" style="color: #b899c4;">* Werbehinweis — Kooperationspartner von CRAZY CLAWS by Susi</p>
+      </div>
+
+      <!-- Contact card -->
+      <div data-aos="fade-up" data-aos-delay="100"
+           class="rounded-2xl px-6 md:px-10 py-8 card-shadow-lg"
+           style="background: #fff; border: 1.5px solid var(--border);">
+        <h2 class="font-display font-black text-2xl md:text-3xl mb-2" style="color: var(--plum);">
+          Kontakt &amp; Warteliste
+        </h2>
+        <p class="text-sm mb-7" style="color: var(--midplum);">Du willst auf die VIP-Warteliste? Melde dich direkt bei Susi!</p>
+
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                 style="background: rgba(255,82,175,.08); border: 1px solid rgba(255,82,175,.2);">
+              <svg class="w-4 h-4 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-sm" style="color: var(--plum);">Studio-Standort</p>
+              <p class="text-sm" style="color: var(--midplum);">Düsseldorf, NRW<br>Deutschland</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                 style="background: rgba(255,82,175,.08); border: 1px solid rgba(255,82,175,.2);">
+              <svg class="w-4 h-4 text-neon" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-sm" style="color: var(--plum);">Instagram</p>
+              <a href="https://instagram.com/susi_nails_it" target="_blank" rel="noopener noreferrer"
+                 class="text-neon text-sm hover:underline">@susi_nails_it</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-7 flex flex-col sm:flex-row gap-4">
+          <a href="https://wa.me/49170XXXXXXX?text=Hallo%20Susi!%20Ich%20m%C3%B6chte%20mich%20in%20die%20VIP-Warteliste%20eintragen."
+             target="_blank" rel="noopener noreferrer"
+             class="btn-primary flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-sm font-semibold">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Jetzt über WhatsApp kontaktieren
+          </a>
+          <a href="https://instagram.com/susi_nails_it" target="_blank" rel="noopener noreferrer"
+             class="btn-ghost-light flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-sm font-semibold">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+            Instagram folgen
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- FOOTER                                                               -->
+  <!-- ================================================================== -->
+  <footer style="border-top: 1px solid var(--border); background: #f8edf5;" class="px-4 md:px-8 py-8">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm"
+         style="color: #b899c4;">
+      <div class="flex items-center gap-2">
+        <span class="font-display font-black text-sm tracking-wider" style="color: var(--plum);">
+          CRAZY<span class="text-neon">CLAWS</span>
+        </span>
+        <span>·</span>
+        <span>© 2024 Susanne [Nachname]. Alle Rechte vorbehalten.</span>
+      </div>
+      <div class="flex items-center gap-5">
+        <button onclick="openModal('impressum')"
+          class="hover:text-neon transition-colors underline underline-offset-2 focus:outline-none focus:ring-2 focus:ring-neon rounded">
+          Impressum
+        </button>
+        <button onclick="openModal('datenschutz')"
+          class="hover:text-neon transition-colors underline underline-offset-2 focus:outline-none focus:ring-2 focus:ring-neon rounded">
+          Datenschutzerklärung
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS init -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    function checkCookieBanner() {
+      if (!localStorage.getItem('cookie-consent')) {
+        document.getElementById('cookie-banner').classList.add('show');
+      }
+    }
+    function acceptCookies() {
+      localStorage.setItem('cookie-consent', 'accepted');
+      document.getElementById('cookie-banner').classList.remove('show');
+    }
+    function rejectCookies() {
+      localStorage.setItem('cookie-consent', 'rejected');
+      document.getElementById('cookie-banner').classList.remove('show');
+    }
+
+    function openModal(id) {
+      var overlay = document.getElementById('modal-' + id);
+      if (overlay) {
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        var closeBtn = overlay.querySelector('button');
+        if (closeBtn) setTimeout(function() { closeBtn.focus(); }, 100);
+      }
+    }
+    function closeModal(id) {
+      var overlay = document.getElementById('modal-' + id);
+      if (overlay) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.active').forEach(function(m) {
+          m.classList.remove('active');
+        });
+        document.body.style.overflow = '';
+      }
+    });
+
+    document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+
+    checkCookieBanner();
+  </script>
+
+</body>
+</html>
